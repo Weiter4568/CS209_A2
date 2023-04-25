@@ -7,25 +7,26 @@ import java.util.List;
 
 public class MultiSelectDialog<T> extends Dialog<List<T>> {
 
-    private final ListView<T> listView;
-    public MultiSelectDialog(String title, List<T> choices) {
-        setTitle(title);
+  private final ListView<T> listView;
 
-        ButtonType confirmButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-        getDialogPane().getButtonTypes().addAll(confirmButtonType, ButtonType.CANCEL);
+  public MultiSelectDialog(String title, List<T> choices) {
+    setTitle(title);
 
-        listView = new ListView<>();
-        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        listView.getItems().addAll(choices);
+    ButtonType confirmButtonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+    getDialogPane().getButtonTypes().addAll(confirmButtonType, ButtonType.CANCEL);
 
-        getDialogPane().setContent(listView);
+    listView = new ListView<>();
+    listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    listView.getItems().addAll(choices);
 
-        setResultConverter(dialogButton -> {
-            if (dialogButton == confirmButtonType) {
-                return new ArrayList<>(listView.getSelectionModel().getSelectedItems());
-            }
-            return null;
+    getDialogPane().setContent(listView);
+
+    setResultConverter(
+        dialogButton -> {
+          if (dialogButton == confirmButtonType) {
+            return new ArrayList<>(listView.getSelectionModel().getSelectedItems());
+          }
+          return null;
         });
-    }
+  }
 }
-
