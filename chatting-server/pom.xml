@@ -10,11 +10,21 @@
     </parent>
 
     <artifactId>chatting-server</artifactId>
+    <properties>
+        <javafx.version>19.0.2.1</javafx.version>
+
+        <main-class.name>cn.edu.sustech.cs209.chatting.client.Main</main-class.name>
+    </properties>
 
     <dependencies>
         <dependency>
             <groupId>cn.edu.sustech.cs209.chatting</groupId>
             <artifactId>chatting-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
         </dependency>
     </dependencies>
 </project>
